@@ -14,5 +14,5 @@ class AlternatifModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama', 'kode'];
+    protected $allowedFields    = ['nama', 'kode', 'periode_id'];
 }

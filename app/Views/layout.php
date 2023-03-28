@@ -79,6 +79,11 @@
                     <i class="fas fa-users"></i>
                     <span>Alternatif</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url  ('laporan')?>">
+                    <i class="fas fa-file"></i>
+                    <span>Laporan Hasil</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

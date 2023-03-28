@@ -4,6 +4,7 @@ angular.module('adminctrl', [])
     .controller('periodeController', periodeController)
     .controller('kriteriaController', kriteriaController)
     .controller('alternatifController', alternatifController)
+    .controller('laporanController', laporanController)
     ;
 
 function dashboardController($scope, dashboardServices) {
@@ -165,28 +166,30 @@ function alternatifController($scope, alternatifServices, kriteriaServices, pesa
                     var itemKriteria = $scope.kriterias.find(x => x.kode == nilai.kode);
                     nilai.kriteria_id = itemKriteria.id;
                     if (itemKriteria) {
-                        itemKriteria.range.forEach(range => {
-                            var bobot = range.range.split("-");
-                            bobot[0] = parseInt(bobot[0]);
-                            bobot[1] = parseInt(bobot[1]);
-                            if (nilai.value >= bobot[0] && nilai.value <= bobot[1]) nilai.bobot = range.bobot;
-                            
-                            // console.log(bobot);
-                        });
+                        if(nilai.value >= 51){
+                            itemKriteria.range.forEach(range => {
+                                var bobot = range.range.split("-");
+                                bobot[0] = parseInt(bobot[0]);
+                                bobot[1] = parseInt(bobot[1]);
+                                if (nilai.value >= bobot[0] && nilai.value <= bobot[1]) nilai.bobot = range.bobot;
+    
+                                // console.log(bobot);
+                            });
+                        }else nilai.bobot = 0;
                     }
                 });
             });
-            
+
             $scope.dataExcel = res;
             console.log(res);
             $.LoadingOverlay("hide");
         })
     }
-    $scope.next=()=>{
+    $scope.next = () => {
         $scope.setShow = 'data';
     }
 
-    $scope.back=()=>{
+    $scope.back = () => {
         $scope.setShow = 'select';
     }
     $scope.save = () => {
@@ -214,5 +217,22 @@ function alternatifController($scope, alternatifServices, kriteriaServices, pesa
 
     $scope.subKlasifikasi = (param) => {
         document.location.href = helperServices.url + "admin/sub_klasifikasi/data/" + param.id;
+    }
+}
+
+function laporanController($scope, periodeServices, pesan, helperServices, laporanServices) {
+    $scope.setTitle = "Laporan";
+    $scope.$emit("SendUp", $scope.setTitle);
+    $scope.datas = {};
+    $scope.periodes = {};
+    $scope.model = {};
+    periodeServices.get().then((res) => {
+        $scope.periodes = res;
+    })
+    $scope.hitung = (param) => {
+        laporanServices.hitung(param).then(res=>{
+            $scope.datas = res;
+            console.log(res);
+        });
     }
 }

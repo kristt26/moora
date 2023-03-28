@@ -65,7 +65,7 @@ $routes->group('alternatif', function ($routes) {
 $routes->group('laporan', function ($routes) {
     $routes->get('/', 'Laporan::index');
     $routes->get('read', 'Laporan::read');
-    $routes->post('post', 'Laporan::post');
+    $routes->post('hitung', 'Laporan::hitung');
     $routes->put('put', 'Laporan::put');
     $routes->delete('delete/(:any)', 'Laporan::deleted/$1');
 });

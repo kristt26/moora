@@ -5,6 +5,7 @@ angular.module('admin.service', [])
     .factory('kriteriaServices', kriteriaServices)
     .factory('RangeServices', RangeServices)
     .factory('alternatifServices', alternatifServices)
+    .factory('laporanServices', laporanServices)
     ;
 
 function dashboardServices($http, $q, helperServices, AuthService) {
@@ -412,6 +413,82 @@ function alternatifServices($http, $q, helperServices, AuthService, pesan) {
             (err) => {
                 def.reject(err);
                 pesan.error(err.data.message)
+            }
+        );
+        return def.promise;
+    }
+
+}
+
+function laporanServices($http, $q, helperServices, AuthService, pesan) {
+    var controller = helperServices.url + 'laporan/';
+    var service = {};
+    service.data = [];
+    return {
+        hitung: hitung,
+        put: put,
+        deleted: deleted
+    };
+
+    
+
+    function hitung(param) {
+        var def = $q.defer();
+        $http({
+            method: 'post',
+            url: controller + 'hitung',
+            data: param,
+            headers: AuthService.getHeader()
+        }).then(
+            (res) => {
+                def.resolve(res.data);
+            },
+            (err) => {
+                pesan.error(err.data.messages.error);
+                def.reject(err);
+            }
+        );
+        return def.promise;
+    }
+
+    function put(param) {
+        var def = $q.defer();
+        $http({
+            method: 'put',
+            url: controller + 'put',
+            data: param,
+            headers: AuthService.getHeader()
+        }).then(
+            (res) => {
+                var data = service.data.find(x => x.id == param.id);
+                if (data) {
+                    data.periode = param.periode;
+                    data.status = param.status;
+                }
+                def.resolve(res.data);
+            },
+            (err) => {
+                def.reject(err);
+            }
+        );
+        return def.promise;
+    }
+
+    function deleted(param) {
+        var def = $q.defer();
+        $http({
+            method: 'delete',
+            url: controller + "/delete/" + param.id,
+            headers: AuthService.getHeader()
+        }).then(
+            (res) => {
+                var index = service.data.indexOf(param);
+                service.data.splice(index, 1);
+                def.resolve(res.data);
+            },
+            (err) => {
+                def.reject(err);
+                message.error(err.data.message)
             }
         );
         return def.promise;

@@ -65,7 +65,11 @@ class Alternatif extends BaseController
         $periode = $this->periode->asObject()->where('status', '1')->first();
         try {
             $this->db->transException(true)->transStart();
+            if($this->periode->countAllResults()>0){
+                $this->alternatif->where('periode_id', $periode->id)->delete();
+            } 
             foreach ($data as $key1 => $alternatif) {
+                $alternatif->periode_id = $periode->id;
                 $this->alternatif->insert($alternatif);
                 $alternatif->id = $this->alternatif->getInsertID();
                 foreach ($alternatif->nilai as $key2 => $nilai) {
