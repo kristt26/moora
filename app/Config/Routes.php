@@ -29,8 +29,13 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->group('periode', function ($routes) {
+$routes->get('/', 'Home::index', ['filter'=>'auth']);
+$routes->group('auth', function ($routes) {
+    $routes->get('/', 'Auth::index');
+    $routes->post('login', 'Auth::login');
+    $routes->get('logout', 'Auth::logout');
+});
+$routes->group('periode', ['filter'=>'auth'], function ($routes) {
     $routes->get('/', 'Periode::index');
     $routes->get('read', 'Periode::read');
     $routes->post('post', 'Periode::post');
@@ -38,7 +43,7 @@ $routes->group('periode', function ($routes) {
     $routes->delete('deleted/(:any)', 'Periode::deleted/$1');
 });
 
-$routes->group('kriteria', function ($routes) {
+$routes->group('kriteria', ['filter'=>'auth'], function ($routes) {
     $routes->get('/', 'Kriteria::index');
     $routes->get('read', 'Kriteria::read');
     $routes->post('post', 'Kriteria::post');
@@ -46,14 +51,14 @@ $routes->group('kriteria', function ($routes) {
     $routes->delete('delete/(:any)', 'Kriteria::deleted/$1');
 });
 
-$routes->group('range', function ($routes) {
+$routes->group('range', ['filter'=>'auth'], function ($routes) {
     $routes->get('read', 'Range::read');
     $routes->post('post', 'Range::post');
     $routes->put('put', 'Range::put');
     $routes->delete('delete /(:any)', 'Range::deleted/$1');
 });
 
-$routes->group('alternatif', function ($routes) {
+$routes->group('alternatif', ['filter'=>'auth'], function ($routes) {
     $routes->get('/', 'Alternatif::index');
     $routes->get('read', 'Alternatif::read');
     $routes->post('post', 'Alternatif::post');
@@ -62,7 +67,7 @@ $routes->group('alternatif', function ($routes) {
     $routes->delete('delete /(:any)', 'Alternatif::deleted/$1');
 });
 
-$routes->group('laporan', function ($routes) {
+$routes->group('laporan', ['filter'=>'auth'], function ($routes) {
     $routes->get('/', 'Laporan::index');
     $routes->get('read', 'Laporan::read');
     $routes->post('hitung', 'Laporan::hitung');

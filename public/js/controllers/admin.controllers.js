@@ -8,9 +8,10 @@ angular.module('adminctrl', [])
     ;
 
 function dashboardController($scope, dashboardServices) {
-    $scope.$emit("SendUp", "Dashboard");
+    $scope.setTitle = "Dashboard";
+    $scope.$emit("SendUp", $scope.setTitle);
     $scope.datas = {};
-    $scope.title = "Dashboard";
+    $scope.paragraph = "Sistem penjurusan menggunakan metode Moora pada SMA .....";
     // dashboardServices.get().then(res=>{
     //     $scope.datas = res;
     // })
