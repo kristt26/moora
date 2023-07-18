@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87ebed957595ba430240ab92e6319333",
+    "content-hash": "2461f71945c09250528266ed99620678",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -457,12 +457,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kristt26/spklib.git",
-                "reference": "0b277078af4a487dab5868f97ce1a4cfb884d222"
+                "reference": "a6a90b5977e7d3855a872f050ee482763a17c333"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kristt26/spklib/zipball/0b277078af4a487dab5868f97ce1a4cfb884d222",
-                "reference": "0b277078af4a487dab5868f97ce1a4cfb884d222",
+                "url": "https://api.github.com/repos/kristt26/spklib/zipball/a6a90b5977e7d3855a872f050ee482763a17c333",
+                "reference": "a6a90b5977e7d3855a872f050ee482763a17c333",
                 "shasum": ""
             },
             "default-branch": true,
@@ -487,45 +487,7 @@
                 "issues": "https://github.com/kristt26/spklib/issues",
                 "source": "https://github.com/kristt26/spklib/tree/master"
             },
-            "time": "2023-03-23T10:51:47+00:00"
-        },
-        {
-            "name": "ocs/wplib",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kristt26/wplib.git",
-                "reference": "119a3efa72aeea7eb0f4fc2d96c590abb6573e9f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kristt26/wplib/zipball/119a3efa72aeea7eb0f4fc2d96c590abb6573e9f",
-                "reference": "119a3efa72aeea7eb0f4fc2d96c590abb6573e9f",
-                "shasum": ""
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ocs\\wplib\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ajenkris Yanto Kungkung",
-                    "email": "kristt26@gmail.com"
-                }
-            ],
-            "description": "Library SPK",
-            "support": {
-                "issues": "https://github.com/kristt26/wplib/issues",
-                "source": "https://github.com/kristt26/wplib/tree/master"
-            },
-            "time": "2021-07-26T08:30:57+00:00"
+            "time": "2023-05-20T01:20:04+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",
@@ -2868,8 +2830,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "ocs/spklib": 20,
-        "ocs/wplib": 20
+        "ocs/spklib": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
