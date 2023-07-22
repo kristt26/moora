@@ -170,8 +170,8 @@ function alternatifController($scope, alternatifServices, kriteriaServices, pesa
                         if(nilai.value >= 51){
                             itemKriteria.range.forEach(range => {
                                 var bobot = range.range.split("-");
-                                bobot[0] = parseInt(bobot[0]);
-                                bobot[1] = parseInt(bobot[1]);
+                                bobot[0] = parseFloat(bobot[0]);
+                                bobot[1] = parseFloat(bobot[1]);
                                 if (nilai.value >= bobot[0] && nilai.value <= bobot[1]) nilai.bobot = range.bobot;
     
                                 // console.log(bobot);

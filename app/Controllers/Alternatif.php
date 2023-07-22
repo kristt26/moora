@@ -35,7 +35,7 @@ class Alternatif extends BaseController
     {
         try {
             $data= $this->request->getJSON();
-            return $this->respond($this->toJson($this->decode->decodebase64($data->base64)));
+            return $this->respond($item = $this->toJson($this->decode->decodebase64($data->base64)));
         } catch (\Throwable $th) {
             return $this->fail($th->getMessage());
         }
@@ -141,7 +141,7 @@ class Alternatif extends BaseController
             for ($col="C"; $col <= $highestColumn ; $col++) { 
                 $nilai = [
                     'kode' => $worksheet->getCell($col . "1")->getValue(),
-                    'value' => $worksheet->getCell($col . $row+1)->getValue(),
+                    'value' => floatval($worksheet->getCell($col . $row+1)->getValue()),
                 ];
                 array_push($item['nilai'], $nilai);
             }

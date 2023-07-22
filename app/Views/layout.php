@@ -60,27 +60,27 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url()?>">
+                <a class="nav-link" href="<?= base_url() ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('periode')?>">
+                <a class="nav-link" href="<?= base_url('periode') ?>">
                     <i class="fas fa-calendar"></i>
                     <span>Periode</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('kriteria')?>">
+                <a class="nav-link" href="<?= base_url('kriteria') ?>">
                     <i class="fas fa-list"></i>
                     <span>Kriteria</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url  ('alternatif')?>">
+                <a class="nav-link" href="<?= base_url('alternatif') ?>">
                     <i class="fas fa-users"></i>
                     <span>Alternatif</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url  ('laporan')?>">
+                <a class="nav-link" href="<?= base_url('laporan') ?>">
                     <i class="fas fa-file"></i>
                     <span>Laporan Hasil</span></a>
             </li>
@@ -171,7 +171,7 @@
                 <div class="modal-body">Pilih tombol keluar jikan ingin mengakhiri sesi</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?= base_url('auth/logout')?>">Keluar</a>
+                    <a class="btn btn-primary" href="<?= base_url('auth/logout') ?>">Keluar</a>
                 </div>
             </div>
         </div>
@@ -226,7 +226,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url() ?>assets/js/sb-admin-2.min.js"></script>
-    
+    <script>
+        $('.carousel').carousel({
+            interval: 3000
+        })
+    </script>
+
 
 </body>
 
