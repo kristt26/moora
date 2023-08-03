@@ -32,7 +32,7 @@
                                     <td>{{item.nama}}</td>
                                     <td>{{item.kode}}</td>
                                     <td>{{item.preferensi}}</td>
-                                    <td>{{$index<=27 ? 'IPA' : 'IPS'}}</td>
+                                    <td>{{item.jurusan}}</td>
                                 </tr>
                             </tbody>
                         </table>
